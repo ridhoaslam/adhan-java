@@ -65,6 +65,12 @@ public enum CalculationMethod {
    * Uses a Fajr angle of 20 and an Isha angle of 18
    */
   SINGAPORE,
+  
+      /**
+   * Ministry of Religious Affairs (Indonesia), Indonesia
+   * Uses a Fajr angle of 20 and an Isha angle of 18
+   */
+  KEMENAG,
 
   /**
    * The default value for {@link CalculationParameters#method} when initializing a
@@ -112,6 +118,10 @@ public enum CalculationMethod {
         return new CalculationParameters(18.0, 90, this);
       }
       case SINGAPORE: {
+        return new CalculationParameters(20.0, 18.0, this)
+            .withMethodAdjustments(new PrayerAdjustments(0, 0, 1, 0, 0, 0));
+      }
+      case KEMENAG: {
         return new CalculationParameters(20.0, 18.0, this)
             .withMethodAdjustments(new PrayerAdjustments(0, 0, 1, 0, 0, 0));
       }
